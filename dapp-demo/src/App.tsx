@@ -1,42 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import '@mysten/dapp-kit/dist/index.css';
-import Muyu from './muyu'
-import WoodenFish from './components/WoodenFish'
+import '@radix-ui/themes/styles.css';
+// import Muyu from './muyu'
 
-import { createNetworkConfig, SuiClientProvider, WalletProvider,ConnectButton } from '@mysten/dapp-kit';
-import { getFullnodeUrl } from '@mysten/sui/client';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-
- 
-// Config options for the networks you want to connect to
-const { networkConfig } = createNetworkConfig({
-  devnet : { url: getFullnodeUrl('devnet') },
-  testnet: { url: getFullnodeUrl('testnet') },
-	localnet: { url: getFullnodeUrl('localnet') },
-	mainnet: { url: getFullnodeUrl('mainnet') },
-});
-const queryClient = new QueryClient();
-
-
+import Layout from './page/Layout';
+import WoodenFish from './page/WoodenFish';
+import UserHome from './page/UserHome';
 
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <QueryClientProvider client={queryClient}>
-    <SuiClientProvider networks={networkConfig} defaultNetwork="devnet">
-      <WalletProvider>
-      <ConnectButton />
-        <Muyu />
-        <WoodenFish />
-      </WalletProvider>
-    </SuiClientProvider>
-  </QueryClientProvider>
+    <Router>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<WoodenFish />} />
+        <Route path="about" element={<UserHome />} />
+      </Route>
+    </Routes>
+  </Router>
   )
 }
 
