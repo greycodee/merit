@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import '@mysten/dapp-kit/dist/index.css';
 import Muyu from './muyu'
+import WoodenFish from './components/WoodenFish'
 
 import { createNetworkConfig, SuiClientProvider, WalletProvider,ConnectButton } from '@mysten/dapp-kit';
 import { getFullnodeUrl } from '@mysten/sui/client';
@@ -32,6 +33,7 @@ function App() {
       <WalletProvider>
       <ConnectButton />
         <Muyu />
+        <WoodenFish />
       </WalletProvider>
     </SuiClientProvider>
   </QueryClientProvider>
