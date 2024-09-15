@@ -4,7 +4,7 @@ import { Grid, Code, Flex, Card, Inset } from '@radix-ui/themes'
 export default function Page() {
     const account = useCurrentAccount();
 
-    const { data, isPending, isError, error, refetch } = useSuiClientQuery(
+    const { data, isError, error } = useSuiClientQuery(
         "getOwnedObjects",
         {
             owner: account?.address as string,

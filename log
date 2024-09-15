@@ -1,0 +1,44 @@
+➜  public git:(main) walrus store demo_video.mov 
+2024-09-15T03:36:48.543739Z  INFO walrus_service::client::cli_utils: using Walrus configuration from '/Users/zheng/.config/walrus/client_config.yaml'
+2024-09-15T03:36:48.543857Z  INFO walrus_service::client::cli_utils: Using wallet configuration from /Users/zheng/.sui/sui_config/client.yaml
+2024-09-15T03:36:49.097535Z  WARN sui_sdk::wallet_context: Client/Server api version mismatch, client api version : 1.31.1, server api version : 1.33.0
+[warn] Client/Server api version mismatch, client api version : 1.31.1, server api version : 1.33.0
+2024-09-15T03:36:49.757413Z  INFO walrus: Storing file demo_video.mov as blob on Walrus
+2024-09-15T03:36:55.752780Z  INFO reserve_and_store_blob{blob_id="3rzu4_nnyX6MkCt6n0uvCXpNwHj44iAjmTw_AJFr01A"}:store_metadata_and_pairs: walrus_service::client: starting to send data to storage nodes
+Success: Blob stored successfully.
+Blob ID: 3rzu4_nnyX6MkCt6n0uvCXpNwHj44iAjmTw_AJFr01A
+Unencoded size: 64.2 MiB
+Encoded size (including metadata): 354 MiB
+Sui object ID: 0xa5a41773746a4e111e0c583aa81ec8e0fa6ea13ce7f542c9ae9605ce13c03e68
+Cost (excluding gas): 0.018 SUI
+
+
+---
+
+➜  walrus-sites git:(main) ./target/release/site-builder --config site-builder/assets/builder-example.yaml publish /Users/zheng/coding/merit/dapp-demo/dist
+2024-09-15T03:59:33.737063Z  INFO site_builder: initializing site builder
+2024-09-15T03:59:33.737401Z  INFO site_builder: configuration loaded config=Config { portal: "walrus.site", package: 0x514cf7ce2df33b9e2ca69e75bc9645ef38aca67b6f2852992a34e35e9f907f58, general: GeneralArgs { rpc_url: None, wallet: None, walrus_binary: Some("walrus"), walrus_config: None, gas_budget: Some(500000000) } }
+2024-09-15T03:59:33.737487Z  INFO site_builder::util: Using wallet configuration from /Users/zheng/.sui/sui_config/client.yaml
+Parsing the directory /Users/zheng/coding/merit/dapp-demo/dist and locally computing blob IDs ... [Ok]
+Storing resource on Walrus: /WoodenFish.svg ... [Ok]
+Storing resource on Walrus: /assets/index-BIWlhzHj.js ... [Ok]
+Storing resource on Walrus: /assets/index-DaLmpvHI.css ... [Ok]
+Storing resource on Walrus: /index.html ... [Ok]
+Storing resource on Walrus: /muyv.webp ... [Ok]
+Storing resource on Walrus: /vite.svg ... [Ok]
+Updating the Walrus Site object on Sui ... 2024-09-15T04:00:28.702363Z  WARN sui_sdk::wallet_context: Client/Server api version mismatch, client api version : 1.27.2, server api version : 1.33.0
+[warn] Client/Server api version mismatch, client api version : 1.27.2, server api version : 1.33.0
+                                           [Ok]
+
+Execution completed
+Operations performed:
+  - created resource /WoodenFish.svg with blob ID yZfxsfIG8RxSfPqryTiLqXuTH5CMMqXoSh4abGy1-hc
+  - created resource /assets/index-BIWlhzHj.js with blob ID _l1yVXz5Q3-FS6QdNRCHiYNnRIZg7RkDrUz5rmDMVBo
+  - created resource /assets/index-DaLmpvHI.css with blob ID 45Yqox_eNBd_nFhX0dDsreOk7SOjLm4CzEms3nM-71I
+  - created resource /index.html with blob ID OFBECSvcVibLQkeObUq-iszl82otDW9CLmYIrI1MzQo
+  - created resource /muyv.webp with blob ID EuiUKhXukSNwuMZw1ZldfKoMaF_eBJYkMNGCxI5QzqA
+  - created resource /vite.svg with blob ID gi1_XwcxA3qhIKHW88RiCdNg43C7ButnOEZsAE-0i8A
+
+Created new site: test site
+New site object ID: 0xac5343c8ce5d1180457fefc2fd66af0648345e13533524c96b876c3ab79effef
+Browse the resulting site at: https://4amcibwhmk4xc89vj79ezkjqzg6kpri088sqm8yrw8mhgehe5r.walrus.site

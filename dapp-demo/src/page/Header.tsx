@@ -1,13 +1,11 @@
 import React from 'react';
-import { ConnectButton,useAutoConnectWallet} from '@mysten/dapp-kit';
+import { ConnectButton} from '@mysten/dapp-kit';
 import { Grid, Flex,Button } from '@radix-ui/themes';
 
 import { useNavigate } from 'react-router-dom';
 
 const Header: React.FC = () => {
     const navigate = useNavigate();
-    const autoConnectionStatus = useAutoConnectWallet();
-
 
     const handleHomeClick = () => {
         navigate('/');
