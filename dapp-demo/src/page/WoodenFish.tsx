@@ -59,8 +59,8 @@ export default function Page() {
         const tx = new Transaction();
         tx.setGasBudget(100000000);
         tx.moveCall({
-            package: '0x6bcf8a279b69d864376fa0f8dcd7b0e14fa7ed92379a903ecc824de9b43a4b20',
-            module: 'puppy',
+            package: '0xef9c0d22862750dc43664121605a6733ca46e6725468a3ae3c0c4b3ef1f44db9',
+            module: 'gdNFT',
             function: 'mint',
             arguments: [
                 tx.pure.string('今日功德 +'+gongDeSum),
@@ -95,17 +95,16 @@ export default function Page() {
         direction="column" 
         align="center" 
         justify="center" 
-        className=" pt-16 "
+        className=""
         >
             <Toaster />
             <Text align="center" size="8" className="text-white">点击木鱼🐟,开始积功德</Text>
-            <Box className="cursor-pointer">
+            <Box className="cursor-pointer h-64 w-64">
                 <img
                     id="muyvImg"
                     src="./muyv.webp"
                     alt="木鱼"
                     onClick={muyvAudioFunction}
-                    className="w-[600px] rounded-[100px] transition duration-300 select-none hover:scale-[.999999] active:scale-[1.01]"
                 />
             </Box>
             <Text size="9" align="center" className="text-white">功德: {gongDeSum}</Text>

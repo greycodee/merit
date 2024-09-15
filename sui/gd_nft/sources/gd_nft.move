@@ -1,38 +1,21 @@
-/*
-/// Module: gd_nft
-module gd_nft::gd_nft {
 
-}
-*/
-module gd_nft::puppy {
-    use std::string::{utf8, String};
+module gd_nft::gdNFT {
+    use std::string::{String};
     use sui::event;
 
-    /// An example NFT that can be minted by anybody. A Puppy is
-    /// a freely-transferable object. Owner can add new traits to
-    /// their puppy at any time and even change the image to the
-    /// puppy's liking.
-    public struct Puppy has key, store {
+
+    public struct GDNFT has key, store {
         id: UID,
-        /// Name of the Puppy
         name: String,
-        /// Grumpy or chill?
         traits: vector<String>,
-        /// The URL of the Puppy's image
         url: String,
     }
 
-    /// Event: emitted when a new Puppy is minted.
-    public struct PuppyMinted has copy, drop {
-        /// ID of the Puppy
-        puppy_id: ID,
-        /// The address of the NFT minter
+  
+    public struct GDNFTMinted has copy, drop {
+        gd_id: ID,
         minted_by: address,
     }
-
-    /// Mint a new Puppy with the given `name`, `traits` and `url`.
-    /// The object is returned to sender and they're free to transfer
-    /// it to themselves or anyone else.
 
     public  fun mint(
         name: String,
@@ -42,48 +25,32 @@ module gd_nft::puppy {
     ) {
         let id = object::new(ctx);
 
-        event::emit(PuppyMinted {
-            puppy_id: id.to_inner(),
+        event::emit(GDNFTMinted {
+            gd_id: id.to_inner(),
             minted_by: ctx.sender(),
         });
-        let nft = Puppy { id, name, traits, url };
-        // transfer::transfer(Puppy { id, name, traits, url }, ctx.sender());
+        let nft = GDNFT { id, name, traits, url };
         transfer::public_transfer(nft, ctx.sender());
-
     }
 
 
-    /// Some puppies get new traits over time... owner of one can
-    /// add a new trait to their puppy at any time.
-    public fun add_trait(puppy: &mut Puppy, trait: String) {
-        puppy.traits.push_back(trait);
+    public fun add_trait(gdnft: &mut GDNFT, trait: String) {
+        gdnft.traits.push_back(trait);
     }
 
-    /// As the puppy grows, owners can change the image to reflect
-    /// the puppy's current state and look.
-    public fun set_url(puppy: &mut Puppy, url: String) {
-        puppy.url = url;
+    public fun set_url(gdnft: &mut GDNFT, url: String) {
+        gdnft.url = url;
     }
 
-    /// It's a good practice to allow the owner to destroy the NFT
-    /// and get a storage rebate. Not a requirement and depends on
-    /// your use case. At last, who doesn't love puppies?
-    public fun destroy(puppy: Puppy) {
-        let Puppy { id, url: _, name: _, traits: _ } = puppy;
+    public fun destroy(gdnft: GDNFT) {
+        let GDNFT { id, url: _, name: _, traits: _ } = gdnft;
         id.delete()
     }
 
-    // Getters for properties.
-    // Struct fields are always private and unless there's a getter,
-    // other modules can't access them. It's up to the module author
-    // to decide which fields to expose and which to keep private.
 
-    /// Get the Puppy's `name`
-    public fun name(puppy: &Puppy): String { puppy.name }
+    public fun name(gdnft: &GDNFT): String { gdnft.name }
 
-    /// Get the Puppy's `traits`
-    public fun traits(puppy: &Puppy): &vector<String> { &puppy.traits }
+    public fun traits(gdnft: &GDNFT): &vector<String> { &gdnft.traits }
 
-    /// Get the Puppy's `url`
-    public fun url(puppy: &Puppy): String { puppy.url }
+    public fun url(gdnft: &GDNFT): String { gdnft.url }
 }

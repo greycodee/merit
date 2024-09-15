@@ -25,7 +25,6 @@ const Header: React.FC = () => {
             </Flex>
             <Flex id='right' className='p-2' justify="end">
                 <ConnectButton />
-                <div>Auto-connection status: {autoConnectionStatus}</div>
                 </Flex>
         </Grid>
     );

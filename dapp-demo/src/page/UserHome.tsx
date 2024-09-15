@@ -9,7 +9,7 @@ export default function Page() {
         {
             owner: account?.address as string,
             filter: {
-                StructType: "0x6bcf8a279b69d864376fa0f8dcd7b0e14fa7ed92379a903ecc824de9b43a4b20::puppy::Puppy"
+                StructType: "0xef9c0d22862750dc43664121605a6733ca46e6725468a3ae3c0c4b3ef1f44db9::gdNFT::GDNFT"
             }
         }
     );
@@ -30,7 +30,7 @@ export default function Page() {
                     data?.data.map((item: any) => {
 
                         return (
-                            <a href={'https://suiscan.xyz/devnet/object/'+item.data.objectId} target="_blank" rel="noopener noreferrer">
+                            <a href={'https://suiscan.xyz/testnet/object/'+item.data.objectId} target="_blank" rel="noopener noreferrer">
                             <Card className='cursor-pointer' size="2">
                                 <Inset clip="padding-box" side="top" pb="current">
                                     <img
